@@ -1,69 +1,87 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ProjectCard from "@/components/ProjectCard";
+import PostPreviewCard from "@/components/PostPreviewCard";
+import { projects } from "@/data/projects";
+import { getAllPosts } from "@/lib/posts";
 
-export default function Home() {
+// This is a Server Component (the default) — getAllPosts() reads
+// files from disk, which can only happen on the server anyway.
+// No "use client" needed since nothing here uses state or events.
+export default function HomePage() {
+  const posts = getAllPosts().slice(0, 2); // 2 most recent posts
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <section className="hero wrap">
+        <div>
+          <p className="hero-eyebrow">Software engineer</p>
+          <h1>Hi, I'm Sixinyang.</h1>
+          <p className="hero-role">
+            I build [the kind of thing you build]. This site is also where I aurafarm and larp.
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+        <dl className="hero-status">
+          <dt>Currently</dt>
+          <dd>Learning WebDev & TypeScript</dd>
+          <dt>Based in</dt>
+          <dd>Ithaca / Las Vegas</dd>
+          <dt>Open to</dt>
+          <dd>Internships / new-grad roles</dd>
+        </dl>
+      </section>
+
+      <section id="work" className="section wrap">
+        <h2 className="section-heading">Selected work</h2>
+        <div className="card-grid">
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      </section>
+
+      <section id="writing" className="section wrap">
+        <h2 className="section-heading">aurafarm</h2>
+        <div className="card-grid">
+          {posts.map((post) => (
+            <PostPreviewCard key={post.slug} post={post} />
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="section wrap">
+        <h2 className="section-heading">About</h2>
+        <p style={{ maxWidth: "60ch" }}>
+          A short bio: who you are, what you study or where you work, and
+          what kind of engineering problems you like.
+        </p>
+        <ul className="skills" style={{ marginTop: "1rem" }}>
+          {["TypeScript", "React", "Next.js", "SQL", "AWS", "Git"].map((skill) => (
+            <li key={skill} className="tag">{skill}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="contact" className="section wrap">
+        <h2 className="section-heading">Contact</h2>
+        <p>The best way to reach me, or just want to say hi.</p>
+        <div className="contact-links">
+          <a href="mailto:you@example.com">you@example.com</a>
+          <a href="https://github.com/yourname" target="_blank" rel="noopener">
+            github.com/yourname
           </a>
+          <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
+            linkedin.com/in/yourname
+          </a>
+          {/* Place resume.pdf in the /public folder — anything there
+              is served as-is at the site root. */}
           <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/resume.pdf`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
           >
-            Documentation
+            Resume (PDF)
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
