@@ -4,8 +4,8 @@
 // rather than in the visitor's browser.
 export default function Footer() {
   return (
-    <footer className="footer wrap">
-      <p>© {new Date().getFullYear()} 6yinyang. Built with Next.js & TypeScript. Made with <s>love</s> spite. </p>
+    <footer className="footer">
+      <p className="footer-wrap">© {new Date().getFullYear()} 6yinyang. Built with Next.js & TypeScript. Made with <s>love</s> spite. </p>
     </footer>
   );
 }

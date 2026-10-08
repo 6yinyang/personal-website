@@ -347,6 +347,12 @@ img {
   font-family: var(--font-mono);
 }
 
+.footer-wrap {
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 0;
+}
+
 @media (max-width: 720px) {
   .nav-links {
     position: absolute;
