@@ -26,8 +26,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Software Engineer",
-  description: "Portfolio and writing from Your Name, a software engineer.",
+  title: "6yinyang — Software Engineer",
+  description: "aura emanating from 6yinyang, a software engineer.",
 };
 
 // Every page in app/ renders as `children` here. This is the one

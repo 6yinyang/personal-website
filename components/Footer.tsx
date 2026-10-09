@@ -5,7 +5,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p className="footer-wrap">© {new Date().getFullYear()} 6yinyang. Built with Next.js & TypeScript. Made with <s>love</s> spite. </p>
+      <p>© {new Date().getFullYear()} 6yinyang. Built with Next.js & TypeScript. Made with <s>love</s> spite. </p>
     </footer>
   );
 }

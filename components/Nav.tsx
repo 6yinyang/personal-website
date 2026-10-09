@@ -18,29 +18,25 @@ export default function Nav() {
   return (
     <nav className="nav">
       <div className="wrap">
-        <span className="nav-name">yourname.dev</span>
-
-        <button
-          className="nav-toggle"
-          aria-expanded={isOpen}
-          aria-label="Toggle navigation"
-          onClick={() => setIsOpen((open) => !open)}
-        >
-          menu
-        </button>
+        <span className="nav-name">
+          <Link href="/" onClick={() => setIsOpen(false)}>6yinyang</Link>
+        </span>
 
         <ul className={`nav-links ${isOpen ? "is-open" : ""}`}>
           <li>
-            <Link href="/#work" onClick={() => setIsOpen(false)}>Work</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)}>about</Link>
+          </li>
+          <li>
+            <Link href="/projects" onClick={() => setIsOpen(false)}>projects</Link>
+          </li>
+          <li>
+            <Link href="/experience" onClick={() => setIsOpen(false)}>experience</Link>
           </li>
           <li>
             <Link href="/aurafarm-blog" onClick={() => setIsOpen(false)}>aurafarm</Link>
           </li>
           <li>
-            <Link href="/#about" onClick={() => setIsOpen(false)}>About</Link>
-          </li>
-          <li>
-            <Link href="/#contact" onClick={() => setIsOpen(false)}>Contact</Link>
+            <Link href="/contact" onClick={() => setIsOpen(false)}>contact</Link>
           </li>
         </ul>
       </div>

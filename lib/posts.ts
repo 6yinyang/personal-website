@@ -1,13 +1,17 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
+import { Marked } from "marked";
+import markedFootnote from "marked-footnote";
 import type { Post, PostMeta } from "@/lib/types";
 
 // Every blog post is a .md file living here. Adding a new post is
 // just adding a new file — no new page to hand-write, unlike the
 // Phase 1 version where each post was its own copy-pasted HTML file.
 const postsDirectory = path.join(process.cwd(), "content/posts");
+
+const markdown = new Marked()
+  .use(markedFootnote());
 
 // Returns every post's metadata, newest first. Used on the homepage
 // preview and the /writing index — neither needs the full body.
@@ -43,7 +47,7 @@ export function getPostBySlug(slug: string): Post {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const contentHtml = marked.parse(content) as string;
+  const contentHtml = markdown.parse(content) as string;
 
   return {
     slug,
