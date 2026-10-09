@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       <section className="hero wrap">
         <div>
-          <p className="hero-eyebrow">Software engineer</p>
+          <p className="hero-eyebrow">software engineer</p>
           <h1>Hi, I'm Sixinyang.</h1>
           <p className="hero-role">
             I try to build things, anything, but also nothing. This site is also where I aurafarm and larp 🤫🧏‍♂️.

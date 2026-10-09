@@ -1,7 +1,5 @@
 # be prepared for mediocrity 🔥🔥🔥
 
-[6yinyang.github.io/](https://6yinyang.github.io/)
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
