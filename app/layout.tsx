@@ -26,7 +26,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "6yinyang — software engineer",
+  title: "6yinyang - software engineer",
   description: "aura emanating from 6yinyang, a software engineer.",
 };
 
